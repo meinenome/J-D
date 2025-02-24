@@ -11,26 +11,11 @@
         scroll-behavior: smooth;
       }
 
-      /* Animation for About Section */
-      /* Animation for About Section */
-      @keyframes backgroundAnimation {
-        0% {
-          background-color: #1a1a1a; /* Dark gray */
-        }
-        50% {
-          background-color: #0a192f; /* Dark blue */
-        }
-        100% {
-          background-color: #1a1a1a; /* Dark gray */
-        }
-      }
-
       /* Apply the animation to the About Section */
       .about {
         animation: backgroundAnimation 10s infinite;
       }
 
-      /* Typing Animation for the About Text */
       /* Typing Animation for the About Text */
       .typing {
         font-size: 1.25rem;
@@ -49,22 +34,17 @@
       }
 
       /* Keyframes to animate the opacity */
-
-      @keyframes blink {
-        50% {
-          border-color: transparent;
-        }
+      @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
       }
+      
+      .animate-fadeInUp { animation: fadeInUp 1s ease-out; }
+      .delay-200 { animation-delay: 0.2s; }
 
-      .about-text {
-        font-size: 1.5rem; /* Increased font size */
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      /* Add buffer space for anchor scrolling */
+      /* Buffer space for scrolling */
       section {
-        scroll-margin-top: 50px; /* Adjust this based on your navbar's height */
+        scroll-margin-top: 50px; /* Adjust this based on the navbar height */
       }
     </style>
   </head>
@@ -72,231 +52,158 @@
     <!-- Navigation -->
     <header class="sticky top-0 w-full bg-gray-900 p-5 shadow-lg z-20">
       <nav class="flex justify-between items-center max-w-7xl mx-auto">
-        <div class="text-2xl font-semibold text-amber-400">
+        <div class="text-2xl font-semibold text-blue-400">
           J&D 
         </div>
         <div class="space-x-5">
-          <a href="#home" class="text-lg text-gray-300 hover:text-amber-400"
-            >Home</a
-          >
-          <a href="#about" class="text-lg text-gray-300 hover:text-amber-400"
-            >About</a
-          >
-          <a href="#services" class="text-lg text-gray-300 hover:text-amber-400"
-            >Services</a
-          >
-          <a href="#projects" class="text-lg text-gray-300 hover:text-amber-400"
-            >Projects</a
-          >
-          <a href="#contact" class="text-lg text-gray-300 hover:text-amber-400"
-            >Contact</a
-          >
+          <a href="#home" class="text-lg text-gray-300 hover:text-amber-400">Home</a>
+          <a href="#services" class="text-lg text-gray-300 hover:text-amber-400">Services</a>
+          <a href="#about" class="text-lg text-gray-300 hover:text-amber-400">About</a>
+          <a href="#projects" class="text-lg text-gray-300 hover:text-amber-400">Projects</a>
+          <a href="#contact" class="text-lg text-gray-300 hover:text-amber-400">Contact</a>
         </div>
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section
-      id="home"
-      class="h-screen bg-cover bg-center relative"
-      style="background-image: url('CC.JPEG')"
-    >
-      <div class="absolute inset-0 bg-black opacity-50"></div>
-      <div
-        class="relative z-10 flex flex-col justify-center items-center text-center text-white h-full"
-      >
-        <h1 class="text-4xl lg:text-5xl font-bold mb-4">
-          Welcome to Our Web & Software Development Services
-        </h1>
-        <p class="text-lg mb-6">
-          Crafting innovative solutions for your business
-        </p>
-      </div>
-    </section>
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section id="home" class="h-screen bg-cover relative" style="background-image: url('ee.JPEG');">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative z-10 text-center text-white pt-40 pb-40 flex flex-col justify-center items-center"> <!-- Flexbox container -->
+<h1 class="text-4xl sm:text-5xl md:text-6xl font-bold animate__animated animate__fadeInUp">Transforming Ideas into Future-Ready Websites and Software Solutions</h1>
+<p class="text-lg sm:text-xl md:text-2xl mt-4 animate__animated animate__fadeInUp animate__delay-1s"> we specialize in creating innovative, user-centric websites and custom software applications that are designed to scale with your business. Whether you need a responsive website, an e-commerce platform, or a robust software solution, our team of experienced developers is here to bring your vision to life. We focus on performance, security, and seamless user experiences to ensure that every project is a success. Let's build the future of your business together with cutting-edge technology that drives growth and efficiency.</p>
+<a href="#contact" class="mt-10 px-12 py-4 bg-amber-400 text-black rounded-full text-lg hover:bg-amber-300 transition animate__animated animate__fadeInUp animate__delay-2s">Get Started Today</a>
 
-    <!-- About Section (Full-Screen with Animation) -->
-    <!-- About Section (Full-Screen with Animation) -->
-    <section
-      id="about"
-      class="min-h-screen py-28 px-5 text-center bg-gradient-to-b from-gray-900 to-black"
-    >
-      <h2 class="text-3xl text-amber-400 mb-4">About Us</h2>
+  </div>
+</section>
 
-      <!-- Flex container for images -->
-      <div class="flex justify-center space-x-6 mb-8">
-        <!-- First Image with a larger, modern container -->
-        <div class="w-96 h-60">
-          <img
-            src="DDD.JPEG"
-            alt="Owner 1"
-            class="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-          />
+
+<!-- Include the Animate.css library for the animation -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+    <!-- Services Section -->
+    <section id="services" class="min-h-screen py-28 px-5 bg-gradient-to-b from-gray-900 to-black">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
+        <div class="lg:w-1/2 mb-12 lg:mb-0">
+          <h2 class="text-5xl font-semibold text-blue-400 leading-tight mb-6">We're obsessed with <br> helping you reach your full potential.</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-300">
+            <div>
+              <h3 class="text-xl font-semibold mb-3">General Design</h3>
+              <ul>
+                <li>Content design</li>
+                <li>Brand design</li>
+                <li>UI design</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+              <ul>
+                <li>website design</li>
+                <li>Development</li>
+                <li>Management</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3">Software Development</h3>
+              <ul>
+                <li>Technical optimization</li>
+                <li>Content optimization</li>
+                <li>design and Development</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3">Web site management</h3>
+              <ul>
+                <li>Updates management</li>
+                <li>Optimization and reporting</li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-        <!-- Second Image with a larger, modern container -->
-        <div class="w-96 h-60">
-          <img
-            src="J.JPEG"
-            alt="Owner 2"
-            class="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-      </div>
-
-      <!-- About Us Text -->
-      <p class="about-text text-lg max-w-4xl mx-auto text-gray-300">
-        We are passionate developers specializing in web and software
-        development. With years of experience and expertise in technologies like
-        React Native, JavaScript, and Swift, we help businesses and individuals
-        build high-quality, user-centric solutions.
-      </p>
-    </section>
-
-    <!-- Services Section (Full-Screen) -->
-    <section
-      id="services"
-      class="min-h-screen py-28 px-5 bg-gradient-to-b from-gray-900 to-black text-center"
-    >
-      <h2 class="text-4xl text-amber-400 mb-12">Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div
-          class="bg-gray-900 p-6 rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-2xl"
-        >
-          <h3 class="text-2xl font-semibold text-amber-400 mb-4">
-            Web Development
-          </h3>
-          <p class="text-lg">
-            Modern, responsive websites tailored to your needs.
-          </p>
-        </div>
-        <div
-          class="bg-gray-900 p-6 rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-2xl"
-        >
-          <h3 class="text-2xl font-semibold text-amber-400 mb-4">
-            Mobile App Development
-          </h3>
-          <p class="text-lg">
-            Cross-platform apps with intuitive user experiences.
-          </p>
-        </div>
-        <div
-          class="bg-gray-900 p-6 rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-2xl"
-        >
-          <h3 class="text-2xl font-semibold text-amber-400 mb-4">
-            Custom Software
-          </h3>
-          <p class="text-lg">
-            Personalized software solutions to solve your challenges.
-          </p>
+        <div class="lg:w-1/2 relative">
+          <div class="bg-gray-800 rounded-l-full overflow-hidden">
+            <img src="CC.JPEG" alt="Team collaboration" class="object-cover w-full h-full" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section (Full-Screen) -->
-    <!-- Projects Section (Full-Screen) -->
-     <!-- Projects Section (Full-Screen) -->
+    <!-- About Section -->
+    <section id="about" class="bg-gradient-to-b from-gray-900 to-black py-28 px-5">
+      <h2 class="text-6xl text-blue-400 font-bold text-center mb-16 ">About Us</h2>
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Team Member 1 -->
+        <div class="relative w-full h-[500px] group overflow-hidden rounded-3xl">
+          <img src="J.JPEG" alt="Our Story" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            <h3 class="text-4xl text-amber-400 font-semibold mb-4">Our Story</h3>
+            <p class="text-lg text-white">We started with a mission to redefine creativity and strategy in a modern world.</p>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="relative w-full h-[500px] group overflow-hidden rounded-3xl">
+          <img src="D.JPEG" alt="Our Vision" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            <h3 class="text-4xl text-amber-400 font-semibold mb-4">Our Vision</h3>
+            <p class="text-lg text-white">Innovating with purpose and creating solutions that empower businesses worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Projects Section -->
 <section id="projects" class="min-h-screen py-28 px-5 bg-gray-900 text-center">
-  <h2 class="text-4xl text-amber-400 mb-12">Projects</h2>
-  
-  <!-- Grid layout for Projects with larger cards -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-    
-    <!-- Project 1 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="11.jpeg" alt="Project 1" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
+  <h2 class="text-6xl text-blue-400 mb-16 font-bold ">
+    <span>Projects</span>
+  </h2>
+
+  <div class="max-w-7xl mx-auto space-y-16">
+    <!-- Project Card 1 (Image Left, Label Right) -->
+    <div class="flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-16">
+      <div class="lg:w-1/2">
+        <img src="15.jpeg" alt="Simples Pro" class="w-full h-auto object-contain rounded-lg shadow-lg transition-transform transform hover:scale-105" />
       </div>
-      <h3 class="text-xl text-amber-400 mb-2">Simples Pro</h3>
-      <p>Invoice generator.</p>
-    </div>
-    
-    <!-- Project 2 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="12.jpeg" alt="Project 2" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
+      <div class="lg:w-1/2 text-left">
+        <h3 class="text-3xl font-semibold text-amber-400 mb-4">SimplesPro</h3>
+        <p class="text-lg text-gray-400 mb-4">An advanced invoice management tool with GST integration and much more.</p>
+        <a href="https://apps.apple.com/au/app/simplespro/id6498627150" target="_blank" class="inline-block px-8 py-3 bg-amber-400 text-black rounded-full text-lg mt-4 hover:bg-amber-300 transition-all transform hover:scale-105">View on App Store</a>
       </div>
-            <h3 class="text-xl text-amber-400 mb-2">Simples Pro</h3>
-      <p>Invoice generator.</p>
     </div>
 
-     <!-- Project 3 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="13.jpeg" alt="Project 2" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
+    <!-- Project Card 2 (Label Left, Image Right) -->
+    <div class="flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-16">
+      <div class="lg:w-1/2 text-left">
+        <h3 class="text-3xl font-semibold text-amber-400 mb-4">Project Name</h3>
+        <p class="text-lg text-gray-400 mb-4">Description of the second project with features highlighted and its value proposition.</p>
+        <a href="project-link-here" target="_blank" class="inline-block px-8 py-3 bg-amber-400 text-black rounded-full text-lg mt-4 hover:bg-amber-300 transition-all transform hover:scale-105">View Project</a>
       </div>
-            <h3 class="text-xl text-amber-400 mb-2">Simples Pro</h3>
-      <p>Invoice generator.</p>
-    </div>
-    
-    <!-- Project 4 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="aa.jpeg" alt="Project 3" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
+      <div class="lg:w-1/2">
+        <img src="11.jpeg" alt="Project 2" class="w-full h-auto object-contain rounded-lg shadow-lg transition-transform transform hover:scale-105" />
       </div>
-     <h3 class="text-xl text-amber-400 mb-2">PCaHelp</h3>
-      <p>App to display information about prostate cancer.</p>
     </div>
 
-     <!-- Project 5 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="ii.jpeg" alt="Project 2" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
+    <!-- Project Card 3 (Image Left, Label Right) -->
+    <div class="flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-16">
+      <div class="lg:w-1/2">
+        <img src="14.jpeg" alt="Project 3" class="w-full h-auto object-contain rounded-lg shadow-lg transition-transform transform hover:scale-105" />
       </div>
-      <h3 class="text-xl text-amber-400 mb-2">PCaHelp</h3>
-      <p>App to display information about prostate cancer.</p>
-    </div>
-     <!-- Project 6 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="ii.jpeg" alt="Project 2" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
+      <div class="lg:w-1/2 text-left">
+        <h3 class="text-3xl font-semibold text-amber-400 mb-4">Project Name</h3>
+        <p class="text-lg text-gray-400 mb-4">Another project description goes here with features that stand out for your audience.</p>
+        <a href="project-link-here" target="_blank" class="inline-block px-8 py-3 bg-amber-400 text-black rounded-full text-lg mt-4 hover:bg-amber-300 transition-all transform hover:scale-105">View Project</a>
       </div>
-      <h3 class="text-xl text-amber-400 mb-2">PCaHelp</h3>
-      <p>App to display information about prostate cancer.</p>
-    </div>
-     <!-- Project 7 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="14.jpeg" alt="Project 3" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
-      </div>
-     <h3 class="text-xl text-amber-400 mb-2">BALA</h3>
-      <p>Web site for Volleyball coaching.</p>
-    </div>
-
-     <!-- Project 7 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="15.jpeg" alt="Project 2" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
-      </div>
-      <h3 class="text-xl text-amber-400 mb-2">BALA</h3>
-      <p>Web site for Volleyball coaching.</p>
-    </div>
-     <!-- Project 9 -->
-    <div class="bg-white p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-      <div class="w-full h-96 bg-white mb-4"> <!-- Increased height here -->
-        <img src="16.jpeg" alt="Project 2" class="w-full h-full object-contain rounded-lg"> <!-- object-contain used -->
-      </div>
-      <h3 class="text-xl text-amber-400 mb-2">BALA</h3>
-      <p>Web site for Volleyball coaching.</p>
     </div>
   </div>
 </section>
 
 
-    <!-- Contact Section (Full-Screen) -->
-    <section
-      id="contact"
-      class="min-h-screen py-28 px-5 bg-gray-900 text-center"
-    >
-      <h2 class="text-4xl text-amber-400 mb-6">Contact</h2>
-      <p class="text-lg mb-12 max-w-3xl mx-auto">
-        Ready to bring your ideas to life? Get in touch to discuss your project
-        requirements.
-      </p>
-      <a
-        href="mailto:yourname@example.com"
-        class="px-8 py-3 bg-amber-400 text-black rounded-full text-lg hover:bg-amber-300 transition"
-        >Email Me</a
-      >
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen py-28 px-5 bg-gray-900 text-center">
+      <h2 class="text-4xl text-blue-400 mb-6">Contact</h2>
+      <p class="text-lg mb-12 max-w-3xl mx-auto">Ready to bring your ideas to life? Get in touch to discuss your project requirements.</p>
+      <a href="mailto:yourname@example.com" class="px-8 py-3 bg-amber-400 text-black rounded-full text-lg hover:bg-amber-300 transition">Email Me</a>
     </section>
 
     <!-- Footer -->
