@@ -66,118 +66,190 @@
         animation-delay: 0.2s;
       }
       /* Sliding animation */
-@keyframes slideUp {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.slide-up {
-  animation: slideUp 1s ease-out;
-}
-
-/* You can adjust the delay for different elements */
-.slide-up:nth-child(1) {
-  animation-delay: 0.3s;  /* Heading (h1) */
-}
-
-.slide-up:nth-child(2) {
-  animation-delay: 0.6s;  /* Paragraph */
-}
-
-.slide-up:nth-child(3) {
-  animation-delay: 0.9s;  /* Button */
-}
-
 
       /* Buffer space for scrolling */
       section {
         scroll-margin-top: 50px; /* Adjust this based on the navbar height */
       }
+
+      /* for the home or hero */
+      :root {
+        --slide-speed: 50s; /* Adjust the slide speed here */
+      }
+
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: blue-400;
+        background-size: 400% 400%;
+
+        overflow: hidden;
+      }
+
+      .sliding-text {
+        position: absolute;
+        width: 200%;
+        white-space: nowrap;
+        font-size: 8vw;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.1);
+        text-transform: uppercase;
+      }
+
+      .slide-left {
+        animation: slideLeft var(--slide-speed) linear infinite;
+      }
+
+      .slide-right {
+        animation: slideRight var(--slide-speed) linear infinite;
+      }
+
+      @keyframes slideLeft {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes slideRight {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .slide-1 {
+        top: 10%;
+      }
+      .slide-2 {
+        top: 30%;
+      }
+      .slide-3 {
+        top: 50%;
+      }
+      .slide-4 {
+        top: 70%;
+      }
+      .slide-5 {
+        top: 90%;
+      }
     </style>
   </head>
   <body class="font-poppins bg-gray-900 text-gray-300">
     <!-- Navigation -->
+
+    <!-- Navigation -->
     <header class="sticky top-0 w-full bg-gray-900 p-5 shadow-lg z-20">
       <nav class="flex justify-between items-center max-w-7xl mx-auto">
-        <div class="text-2xl font-semibold text-blue-400">J&D</div>
-        <div class="space-x-5 hidden lg:flex">
-          <a href="#home" class="text-lg text-gray-300 hover:text-amber-400"
+        <!-- Logo -->
+        <div class="text-2xl font-semibold text-blue-400 mr-4">J&D</div>
+
+        <!-- Hamburger Menu Button (Visible on Mobile) -->
+        <button
+          id="menu-btn"
+          class="md:hidden text-gray-300 text-2xl focus:outline-none"
+        >
+          ☰
+        </button>
+
+        <!-- Navigation Links -->
+        <div
+          id="menu"
+          class="hidden md:flex flex-col md:flex-row md:space-x-5 absolute md:static top-16 left-0 w-full bg-gray-900 md:bg-transparent text-center md:text-left shadow-lg md:shadow-none"
+        >
+          <a
+            href="#home"
+            class="block py-3 md:py-0 text-lg text-gray-300 hover:text-amber-400"
             >Home</a
           >
-          <a href="#services" class="text-lg text-gray-300 hover:text-amber-400"
+          <a
+            href="#services"
+            class="block py-3 md:py-0 text-lg text-gray-300 hover:text-amber-400"
             >Services</a
           >
-          <a href="#about" class="text-lg text-gray-300 hover:text-amber-400"
+          <a
+            href="#about"
+            class="block py-3 md:py-0 text-lg text-gray-300 hover:text-amber-400"
             >About</a
           >
-          <a href="#projects" class="text-lg text-gray-300 hover:text-amber-400"
+          <a
+            href="#projects"
+            class="block py-3 md:py-0 text-lg text-gray-300 hover:text-amber-400"
             >Projects</a
           >
-          <a href="#contact" class="text-lg text-gray-300 hover:text-amber-400"
+          <a
+            href="#contact"
+            class="block py-3 md:py-0 text-lg text-gray-300 hover:text-amber-400"
             >Contact</a
           >
         </div>
-
-        <!-- Mobile menu toggle -->
-        <div class="lg:hidden">
-          <button id="menu-toggle" class="text-gray-300">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
-        </div>
       </nav>
-
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="lg:hidden hidden flex-col bg-gray-900 text-gray-300 absolute inset-x-0 top-16 p-5 space-y-3"
-      >
-        <a href="#home" class="text-lg hover:text-amber-400">Home</a>
-        <a href="#services" class="text-lg hover:text-amber-400">Services</a>
-        <a href="#about" class="text-lg hover:text-amber-400">About</a>
-        <a href="#projects" class="text-lg hover:text-amber-400">Projects</a>
-        <a href="#contact" class="text-lg hover:text-amber-400">Contact</a>
-      </div>
     </header>
 
+    <!-- JavaScript to Toggle Menu -->
     <script>
-      const menuToggle = document.getElementById("menu-toggle");
-      const mobileMenu = document.getElementById("mobile-menu");
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+      const menuBtn = document.getElementById("menu-btn");
+      const menu = document.getElementById("menu");
+
+      menuBtn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
       });
     </script>
 
     <!-- Hero Section -->
-<section id="home" class="h-screen bg-cover relative" style="background-image: url('ee.JPEG');">
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-  <div class="relative z-10 text-center text-white pt-40 pb-40 flex flex-col justify-center items-center">
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold slide-up">Transforming Ideas into Future-Ready Websites and Software Solutions</h1>
-    <p class="text-lg sm:text-xl md:text-2xl mt-4 slide-up" style="animation-delay: 0.2s;">
-      We specialize in creating innovative, user-centric websites and custom software applications that are designed to scale with your business. Whether you need a responsive website, an e-commerce platform, or a robust software solution, our team of experienced developers is here to bring your vision to life. We focus on performance, security, and seamless user experiences to ensure that every project is a success. Let's build the future of your business together with cutting-edge technology that drives growth and efficiency.
-    </p>
-    <a href="#contact" class="mt-10 px-12 py-4 bg-amber-400 text-black rounded-full text-lg hover:bg-amber-300 transition slide-up" style="animation-delay: 0.4s;">Get Started Today</a>
-  </div>
-</section>
-
+    <section
+      id="home"
+      class="relative h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 bg-cover bg-center opacity-30"
+        style="background-image: url('your-image.jpg')"
+      ></div>
+      <div class="relative z-10 text-center text-white">
+        <h1 class="text-6xl font-bold mb-6">Welcome to J&D</h1>
+        <p class="text-xl mb-6">
+          We bring your ideas to life with cutting-edge web and software
+          solutions.
+        </p>
+        <a
+          href="#services"
+          class="px-8 py-3 bg-amber-400 text-black rounded-full text-lg hover:bg-amber-300 transition"
+          >Explore Our Services</a
+        >
+      </div>
+      <div
+        class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center overflow-hidden"
+      >
+        <!-- Sliding Text Elements -->
+        <div class="sliding-text slide-left slide-1">
+          Innovate. Create. Inspire. • Innovate. Create. Inspire. Innovate.
+          Create. Inspire. • Innovate. Create. Inspire. •
+        </div>
+        <div class="sliding-text slide-right slide-2">
+          Building Beyond Imagination • Building Beyond Imagination • Building
+          Beyond Imagination • Building Beyond Imagination •
+        </div>
+        <div class="sliding-text slide-left slide-3">
+          Transforming Ideas Into Reality • Transforming Ideas Into Reality •
+          Transforming Ideas Into Reality •
+        </div>
+        <div class="sliding-text slide-right slide-4">
+          Your Vision, Our Mission • Your Vision, Our Mission •Your Vision, Our
+          Mission • Your Vision, Our Mission •
+        </div>
+        <div class="sliding-text slide-left slide-5">
+          Crafting Digital Experiences • Crafting Digital Experiences •
+        </div>
+      </div>
+    </section>
 
     <!-- Services Section -->
     <section
@@ -227,10 +299,141 @@
         <div class="lg:w-1/2 relative">
           <div class="bg-gray-800 rounded-l-full overflow-hidden">
             <img
-              src="CC.JPEG"
+              src="oo.jpeg"
               alt="Team collaboration"
               class="object-cover w-full h-full"
             />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects section -->
+
+    <section
+      id="projects"
+      class="min-h-screen py-28 px-5 bg-gradient-to-b from-purple-400 to-pink-300 text-center"
+    >
+      <h2 class="text-6xl text-black mb-16 font-bold">
+        What we do <span class="text-purple-800">(and do well)</span>
+      </h2>
+
+      <div class="max-w-7xl mx-auto space-y-19 relative">
+        <!-- First Project -->
+        <div class="flex flex-col md:flex-row items-center md:space-x-8">
+          <div class="w-full md:w-[50%] flex justify-center">
+            <div
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[20%]"
+              style="background-image: url('92.jpeg')"
+            ></div>
+          </div>
+          <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
+            <h3 class="text-xl text-gray-800 font-semibold">
+              Help influencers target audiences for greater
+              <span class="text-purple-800">brand engagement</span>
+            </h3>
+          </div>
+        </div>
+
+        <!-- Second Project -->
+        <div
+          class="flex flex-col md:flex-row-reverse items-center md:space-x-8 md:space-x-reverse"
+        >
+          <div class="w-full md:w-[50%] flex justify-center">
+            <div
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[45%]"
+              style="background-image: url('91.jpeg')"
+            ></div>
+          </div>
+          <div class="w-full md:w-1/2 text-center md:text-right mt-5 md:mt-0">
+            <h3 class="text-xl text-gray-800 font-semibold">
+              Brand positioning for
+              <span class="text-purple-800">disruptive tech</span>
+            </h3>
+          </div>
+        </div>
+
+        <!-- Third Project -->
+        <div class="flex flex-col md:flex-row items-center md:space-x-8">
+          <div class="w-full md:w-[50%] flex justify-center">
+            <div
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[20%]"
+              style="background-image: url('92.jpeg')"
+            ></div>
+          </div>
+          <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
+            <h3 class="text-xl text-gray-800 font-semibold">
+              Help influencers target audiences for greater
+              <span class="text-purple-800">brand engagement</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects section -->
+
+    <section
+      id="projects"
+      class="min-h-screen py-28 px-5 bg-gradient-to-b from-purple-400 to-pink-300 text-center"
+    >
+      <h2 class="text-6xl text-black mb-16 font-bold">
+        What we do <span class="text-purple-800">(and do well)</span>
+      </h2>
+
+      <div class="max-w-7xl mx-auto space-y-19 relative">
+        <!-- First Project -->
+        <div class="flex flex-col md:flex-row items-center md:space-x-8">
+          <div
+            class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
+          >
+            <div
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
+            >
+              <img src="14.jpeg" class="w-full h-full object-contain" />
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
+            <h3 class="text-xl text-gray-800 font-semibold">
+              Help influencers target audiences for greater
+              <span class="text-purple-800">brand engagement</span>
+            </h3>
+          </div>
+        </div>
+
+        <!-- Second Project -->
+        <div
+          class="flex flex-col md:flex-row-reverse items-center md:space-x-8 md:space-x-reverse"
+        >
+          <div class="w-full md:w-[50%] flex justify-center">
+            <div
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
+            >
+              <img src="15.jpeg" class="w-full h-full object-contain" />
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 text-center md:text-right mt-5 md:mt-0">
+            <h3 class="text-xl text-gray-800 font-semibold">
+              Brand positioning for
+              <span class="text-purple-800">disruptive tech</span>
+            </h3>
+          </div>
+        </div>
+
+        <!-- Third Project -->
+        <div class="flex flex-col md:flex-row items-center md:space-x-8">
+          <div class="w-full md:w-[50%] flex justify-center">
+            <div
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
+            >
+              <img src="16.jpeg" class="w-full h-full object-contain" />
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
+            <h3 class="text-xl text-gray-800 font-semibold">
+              Help influencers target audiences for greater
+              <span class="text-purple-800">brand engagement</span>
+            </h3>
           </div>
         </div>
       </div>
@@ -291,17 +494,6 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section
-      id="projects"
-      class="min-h-screen py-28 px-5 bg-gray-900 text-center"
-    >
-      <h2 class="text-6xl text-blue-400 mb-16 font-bold">Projects</h2>
-      <div class="max-w-7xl mx-auto space-y-16">
-        <!-- Project Cards here, follow similar pattern as the previous sections for mobile responsiveness -->
-      </div>
-    </section>
-
     <!-- Contact Section -->
     <section
       id="contact"
@@ -320,8 +512,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-6 text-center">
-      <p>&copy; 2025 J&D. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 py-10 text-center">
+      <p>&copy; 2025 J&D. All Rights Reserved.</p>
     </footer>
   </body>
 </html>
