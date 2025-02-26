@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web & Software Developer</title>
@@ -70,6 +73,13 @@
       /* Buffer space for scrolling */
       section {
         scroll-margin-top: 50px; /* Adjust this based on the navbar height */
+      }
+
+      /* Hide image on mobile (small screens) */
+      @media (max-width: 767px) {
+        .animate-image {
+          display: none;
+        }
       }
 
       /* for the home or hero */
@@ -250,6 +260,7 @@
         </div>
       </div>
     </section>
+    <!-- Services Section -->
 
     <!-- Services Section -->
     <section
@@ -258,12 +269,14 @@
     >
       <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
         <div class="lg:w-1/2 mb-12 lg:mb-0">
-          <h2 class="text-5xl font-semibold text-blue-400 leading-tight mb-6">
+          <h2
+            class="text-5xl font-semibold text-blue-400 leading-tight mb-6 animate-text"
+          >
             We're obsessed with <br />
             helping you reach your full potential.
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-300">
-            <div>
+            <div class="animate-text">
               <h3 class="text-xl font-semibold mb-3">General Design</h3>
               <ul>
                 <li>Content design</li>
@@ -271,15 +284,15 @@
                 <li>UI design</li>
               </ul>
             </div>
-            <div>
+            <div class="animate-text">
               <h3 class="text-xl font-semibold mb-3">Web Development</h3>
               <ul>
-                <li>website design</li>
+                <li>Website design</li>
                 <li>Development</li>
                 <li>Management</li>
               </ul>
             </div>
-            <div>
+            <div class="animate-text">
               <h3 class="text-xl font-semibold mb-3">Software Development</h3>
               <ul>
                 <li>Technical optimization</li>
@@ -287,7 +300,7 @@
                 <li>Design and Development</li>
               </ul>
             </div>
-            <div>
+            <div class="animate-text">
               <h3 class="text-xl font-semibold mb-3">Website Management</h3>
               <ul>
                 <li>Updates management</li>
@@ -301,18 +314,58 @@
             <img
               src="oo.jpeg"
               alt="Team collaboration"
-              class="object-cover w-full h-full"
+              class="object-cover w-full h-full animate-image"
             />
           </div>
         </div>
       </div>
     </section>
 
+    <!-- GSAP Scroll Animation -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Function to trigger the animation
+        function triggerAnimation() {
+          gsap.from(".animate-text", {
+            opacity: 0,
+            x: -50,
+            duration: 1.2,
+            stagger: 0.2, // Delay between elements
+          });
+
+          gsap.from(".animate-image", {
+            opacity: 0,
+            x: 50,
+            duration: 1.2,
+          });
+        }
+
+        // Intersection Observer to detect when the section is in view
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Trigger animation when the section is in view
+                triggerAnimation();
+                observer.unobserve(entry.target); // Stop observing after animation is triggered
+              }
+            });
+          },
+          { threshold: 0.5 }
+        ); // Trigger when 50% of the section is in view
+
+        // Observe the Services section
+        observer.observe(document.getElementById("services"));
+      });
+    </script>
+
     <!-- projects section -->
 
     <section
       id="projects"
-      class="min-h-screen py-28 px-5 bg-gradient-to-b from-purple-400 to-pink-300 text-center"
+      class="min-h-screen py-28 px-5 bg-gradient-to-b from-purple-500 to-purple-500 text-center"
     >
       <h2 class="text-6xl text-black mb-16 font-bold">
         What we do <span class="text-purple-800">(and do well)</span>
@@ -324,13 +377,13 @@
           <div class="w-full md:w-[50%] flex justify-center">
             <div
               class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[20%]"
-              style="background-image: url('92.jpeg')"
+              style="background-image: url('94.jpeg')"
             ></div>
           </div>
           <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
             <h3 class="text-xl text-gray-800 font-semibold">
-              Help influencers target audiences for greater
-              <span class="text-purple-800">brand engagement</span>
+              Helping your business to create and manage your invoices
+              <span class="text-purple-800">Invoice Management</span>
             </h3>
           </div>
         </div>
@@ -342,13 +395,13 @@
           <div class="w-full md:w-[50%] flex justify-center">
             <div
               class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[45%]"
-              style="background-image: url('91.jpeg')"
+              style="background-image: url('100.jpeg')"
             ></div>
           </div>
           <div class="w-full md:w-1/2 text-center md:text-right mt-5 md:mt-0">
             <h3 class="text-xl text-gray-800 font-semibold">
-              Brand positioning for
-              <span class="text-purple-800">disruptive tech</span>
+              Helping your business to create and manage your invoices
+              <span class="text-purple-800">Invoice Management</span>
             </h3>
           </div>
         </div>
@@ -358,13 +411,13 @@
           <div class="w-full md:w-[50%] flex justify-center">
             <div
               class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[20%]"
-              style="background-image: url('92.jpeg')"
+              style="background-image: url('96.jpeg')"
             ></div>
           </div>
           <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
             <h3 class="text-xl text-gray-800 font-semibold">
-              Help influencers target audiences for greater
-              <span class="text-purple-800">brand engagement</span>
+              Helping your business to create and manage your invoices
+              <span class="text-purple-800">Invoice Management</span>
             </h3>
           </div>
         </div>
@@ -375,7 +428,7 @@
 
     <section
       id="projects"
-      class="min-h-screen py-28 px-5 bg-gradient-to-b from-purple-400 to-pink-300 text-center"
+      class="min-h-screen py-28 px-5 bg-gradient-to-b from-purple-500 to-purple-500 text-center"
     >
       <h2 class="text-6xl text-black mb-16 font-bold">
         What we do <span class="text-purple-800">(and do well)</span>
@@ -384,19 +437,16 @@
       <div class="max-w-7xl mx-auto space-y-19 relative">
         <!-- First Project -->
         <div class="flex flex-col md:flex-row items-center md:space-x-8">
-          <div
-            class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
-          >
+          <div class="w-full md:w-[50%] flex justify-center">
             <div
-              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
-            >
-              <img src="14.jpeg" class="w-full h-full object-contain" />
-            </div>
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[20%]"
+              style="background-image: url('98.jpeg')"
+            ></div>
           </div>
           <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
             <h3 class="text-xl text-gray-800 font-semibold">
-              Help influencers target audiences for greater
-              <span class="text-purple-800">brand engagement</span>
+              Redefining volleyball Coaching
+              <span class="text-purple-800">BALA</span>
             </h3>
           </div>
         </div>
@@ -407,15 +457,14 @@
         >
           <div class="w-full md:w-[50%] flex justify-center">
             <div
-              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
-            >
-              <img src="15.jpeg" class="w-full h-full object-contain" />
-            </div>
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[40%]"
+              style="background-image: url('97.jpeg')"
+            ></div>
           </div>
           <div class="w-full md:w-1/2 text-center md:text-right mt-5 md:mt-0">
             <h3 class="text-xl text-gray-800 font-semibold">
-              Brand positioning for
-              <span class="text-purple-800">disruptive tech</span>
+              Redefining volleyball Coaching
+              <span class="text-purple-800">BALA</span>
             </h3>
           </div>
         </div>
@@ -424,15 +473,14 @@
         <div class="flex flex-col md:flex-row items-center md:space-x-8">
           <div class="w-full md:w-[50%] flex justify-center">
             <div
-              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex justify-center"
-            >
-              <img src="16.jpeg" class="w-full h-full object-contain" />
-            </div>
+              class="w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cover bg-center rounded-[20%]"
+              style="background-image: url('99.jpeg')"
+            ></div>
           </div>
           <div class="w-full md:w-1/2 text-center md:text-left mt-5 md:mt-0">
             <h3 class="text-xl text-gray-800 font-semibold">
-              Help influencers target audiences for greater
-              <span class="text-purple-800">brand engagement</span>
+              Redefining volleyball Coaching
+              <span class="text-purple-800">BALA</span>
             </h3>
           </div>
         </div>
